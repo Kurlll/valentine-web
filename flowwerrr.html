@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animasi</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+        font-family: Arial, sans-serif;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        background-color: #ff4da6;
+        color: white;
+        transition: 0.3s;
+        z-index: 10;
+    }
+
+    button:hover {
+        background-color: #ff1a8c;
+        transform: scale(1.1);
+    }
+
+    .flower {
+        position: absolute;
+        top: -50px;
+        font-size: 24px;
+        animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<button onclick="createFlowers()">Klik ini bunga buat daveh🌸</button>
+<br>
+<script>
+function createFlowers() {
+    for (let i = 0; i < 20; i++) {
+        let flower = document.createElement("div");
+        flower.classList.add("flower");
+        flower.innerHTML = "🌸";
+        flower.style.left = Math.random() * 100 + "vw";
+        flower.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(flower);
+
+        setTimeout(() => {
+            flower.remove();
+        }, 6000);
+    }
+}
+
+        setTimeout(() => {
+            flower.remove();
+        }, 6000);
+</script>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Chocolate</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #4882ff, #ff9adf);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Tombol */
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: #ee6cff;
+    color: rgb(255, 255, 255);
+    transition: 0.3s;
+    z-index: 10;
+}
+
+button:hover {
+    background-color: #ff1e4d;
+    transform: scale(1.1);
+}
+
+/* Coklat jatuh */
+.choco {
+    position: absolute;
+    top: -50px;
+    font-size: 35px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(85vh) rotate(360deg);
+    }
+}
+
+/* Lelehan */
+.melt {
+    position: absolute;
+    bottom: 0;
+    width: 40px;
+    height: 15px;
+    background: #4e342e;
+    border-radius: 50%;
+    animation: spread 2s forwards;
+}
+
+@keyframes spread {
+    from {
+        width: 20px;
+        height: 10px;
+        opacity: 1;
+    }
+    to {
+        width: 90px;
+        height: 25px;
+        opacity: 0.9;
+    }
+}
+
+/* Hati jatuh background */
+.heart {
+    position: absolute;
+    top: -20px;
+    color: #f156ff;
+    font-size: 20px;
+    animation: heartFall linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes heartFall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+</style>
+</head>
+<body>
+
+<button onclick="dropChocolate()">Klik Coklat Valentine 🍫❤️</button>
+
+<script>
+/* Coklat */
+function dropChocolate() {
+    let choco = document.createElement("div");
+    choco.classList.add("choco");
+    choco.innerHTML = "🍫";
+    choco.style.left = Math.random() * 90 + "vw";
+    choco.style.animationDuration = "2s";
+    document.body.appendChild(choco);
+
+    setTimeout(() => {
+        choco.remove();
+
+        let melt = document.createElement("div");
+        melt.classList.add("melt");
+        melt.style.left = choco.style.left;
+        document.body.appendChild(melt);
+
+        setTimeout(() => {
+            melt.remove();
+        }, 2000);
+
+    }, 2000);
+}
+
+/* Hati otomatis jatuh */
+function createHearts() {
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
+}
+
+setInterval(createHearts, 500);
+</script>
+
+</body>
+</html>
